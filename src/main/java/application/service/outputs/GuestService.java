@@ -1,9 +1,7 @@
-package application.service;
+package application.service.outputs;
 
 import application.domain.Guest;
-import application.domain.Person;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface GuestService {

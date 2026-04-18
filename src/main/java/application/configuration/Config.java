@@ -1,10 +1,18 @@
 package application.configuration;
 
+import application.domain.BedRoom;
 import application.domain.Guest;
+import application.repository.BedRoomRepository;
 import application.repository.GuestRepository;
-import application.service.GuestService;
+import application.service.BedRoomServiceImp;
+import application.service.outputs.BedRoomService;
+import application.service.outputs.GuestAdminService;
+import application.service.GuestAdminServiceImpl;
+import application.service.outputs.GuestService;
 import application.service.GuestServiceImpl;
+import application.service.ports.BedRoomRepositoryPort;
 import application.userinterface.MenuApp;
+import application.view.BedRoomView;
 import application.view.GuestView;
 
 public class Config {
@@ -14,10 +22,14 @@ public class Config {
         Guest guest = new Guest();
         GuestRepository guestRepository = new GuestRepository();
         GuestService guestService = new GuestServiceImpl(guestRepository);
-        GuestView guestView = new GuestView(guestService, guest);
+        GuestAdminService guestAdminService = new GuestAdminServiceImpl(guestRepository);
+        GuestView guestView = new GuestView(guestService, guest, guestAdminService );
+        BedRoom bedRoom = new BedRoom();
+        BedRoomRepositoryPort bedRoomRepositoryPort = new BedRoomRepository();
+        BedRoomService bedRoomService = new BedRoomServiceImp(bedRoomRepositoryPort);
+        BedRoomView bedRoomView = new BedRoomView(bedRoomService, bedRoom);
 
-
-        return new MenuApp(guestView);
+        return new MenuApp(guestView, bedRoomView);
     }
 
 

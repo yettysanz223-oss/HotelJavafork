@@ -1,8 +1,8 @@
 package application.service;
 
 import application.domain.Guest;
-import application.repository.BedRoomRepository;
 import application.repository.GuestRepository;
+import application.service.outputs.GuestService;
 
 import java.util.Optional;
 import java.util.Scanner;

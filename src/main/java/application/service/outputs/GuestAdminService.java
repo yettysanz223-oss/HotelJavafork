@@ -1,4 +1,4 @@
-package application.service;
+package application.service.outputs;
 
 import application.domain.Guest;
 
