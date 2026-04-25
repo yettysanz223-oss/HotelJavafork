@@ -1,139 +1,59 @@
 package application.userinterface;
 
-import application.domain.BedRoom;
+import application.view.BedRoomTypeView;
 import application.view.BedRoomView;
+import application.view.EmployeeView;
 import application.view.GuestView;
-
 import java.util.Scanner;
 
 public class MenuApp {
 
-    Scanner sc = new Scanner(System.in);
-
     private final GuestView guestView;
     private final BedRoomView bedRoomView;
+    private final EmployeeView employeeView;
+    private final BedRoomTypeView bedRoomTypeView;
+    private final Scanner sc = new Scanner(System.in);
 
-    public MenuApp(GuestView guestView, BedRoomView bedRoomView){
-        this.guestView = guestView;
-        this.bedRoomView = bedRoomView;
+    // Constructor que recibe los 4 componentes
+    public MenuApp(GuestView g, BedRoomView b, EmployeeView e, BedRoomTypeView bt) {
+        this.guestView = g;
+        this.bedRoomView = b;
+        this.employeeView = e;
+        this.bedRoomTypeView = bt;
     }
 
-    public void showMainMenu(){
+    public void showMainMenu() {
+        int option;
+        do {
+            System.out.println("\n===== MENU PRINCIPAL =====");
+            System.out.println("1. Huespedes");
+            System.out.println("2. Habitaciones");
+            System.out.println("3. Empleados");
+            System.out.println("4. Gestionar Tipos de Habitación");
+            System.out.println("0. Salir");
+            System.out.print("Seleccione una opción: ");
+            option = sc.nextInt();
 
-        System.out.println("Bienvenido al Hotel Java");
-        System.out.println("Presione 1 para iniciar la aplicacion");
-
-        int init = sc.nextInt();
-        sc.nextLine();
-        while(init != 0){
-
-            System.out.println("Seleccione 1. Registrar Usuario 2. Iniciar Sesion 3. Salir");
-            int option = sc.nextInt();
-            sc.nextLine();
-            switch (option){
+            switch (option) {
                 case 1:
-                    System.out.println("Registrar Usuario");
-                    guestView.createGuest();
+                    // Lógica huéspedes
                     break;
                 case 2:
-                    System.out.println("Iniciar Sesion");
-                    //showGuestMenu();
-                    showBedRoomMenu();
+                    // Lógica habitaciones
                     break;
                 case 3:
-                    System.out.println("Saliendo de la aplicacion");
-                    init = 0;
-                    break;
-                default:
-                    System.out.println("Opcion no valida, por favor seleccione una opcion valida");
-            }
-
-        }
-    }
-
-
-    public void showGuestMenu(){
-
-        System.out.println("Menu Huespedes");
-
-        Boolean init = true;
-
-        while(init){
-
-            System.out.println("Seleccione 1. Crear Huesped 2. Actualizar Huesped 3. Eliminar Huesped 4. Listar Huespedes 5. Buscar huesped por id 6. salir");
-            int option = sc.nextInt();
-            sc.nextLine();
-            switch (option){
-                case 1:
-                    System.out.println("Crear huesped");
-                    guestView.createGuest();
-                    break;
-                case 2:
-                    System.out.println("Actualizar Huesped");
-                    break;
-                case 3:
-                    System.out.println("Eliminar Huesped");
+                    // Lógica empleados
                     break;
                 case 4:
-                    System.out.println("Listar Huespedes");
-                        guestView.getAllGuests();
+                    System.out.println("Entrando a Gestionar Tipos de Habitación..."); // <--- AÑADE ESTO
+                    bedRoomTypeView.createBedRoomTypeView();
                     break;
-                case 5:
-                    System.out.println("Buscar huesped por id");
-                    break;
-                case 6:
-                    System.out.println("Saliendo del menu de huespedes");
-                    init = false;
+                case 0:
+                    System.out.println("Saliendo...");
                     break;
                 default:
-                    System.out.println("Opcion no valida, por favor seleccione una opcion valida");
-
+                    System.out.println("Opción no válida.");
             }
-        }
+        } while (option != 0);
     }
-
-
-    public void showBedRoomMenu(){
-
-        System.out.println("Menu Habitaciones");
-
-        Boolean init = true;
-
-        while(init){
-
-            System.out.println("Seleccione 1. Crear Habitaciones 3. Eliminar Habitaciones 4. Listar Hueabitaciones 5. Buscar habitaciones por id 6. salir");
-            int option = sc.nextInt();
-            sc.nextLine();
-            switch (option){
-                case 1:
-                    System.out.println("Crear huesped");
-                    bedRoomView.createBedRoom();
-                    break;
-                case 2:
-                    System.out.println("Actualizar Habitaciones");
-                    break;
-                case 3:
-                    System.out.println("Eliminar Habitaciones");
-                    break;
-                case 4:
-                    System.out.println("Listar Habitaciones");
-                    bedRoomView.getAllBedRooms();
-                    break;
-                case 5:
-                    System.out.println("Buscar habitaciones por id");
-                    break;
-                case 6:
-                    System.out.println("Saliendo del menu de habitaciones");
-                    init = false;
-                    break;
-                default:
-                    System.out.println("Opcion no valida, por favor seleccione una opcion valida");
-
-            }
-        }
-    }
-
-
-
-
 }

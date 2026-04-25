@@ -38,13 +38,18 @@ public class BedRoomServiceImp implements BedRoomService {
     @Override
     public BedRoom updateBedRoom(BedRoom bedRoom) {
 
-        bedRoomRepositoryPort.updateBedRoom(1,bedRoom);
+        int id = bedRoom.getRoomId();
+
+        bedRoomRepositoryPort.updateBedRoom(id, bedRoom);
+
         return bedRoom;
     }
 
     @Override
     public BedRoom getBedRoomById(int id) {
-        return null;
+
+        return bedRoomRepositoryPort.findBedRoomById(id)
+                .orElse(null);
     }
 
     @Override
@@ -56,5 +61,6 @@ public class BedRoomServiceImp implements BedRoomService {
     @Override
     public void deleteBedRoomById(int id) {
 
+        bedRoomRepositoryPort.deleteBedRoomById(id);
     }
 }

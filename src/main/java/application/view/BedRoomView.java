@@ -25,6 +25,23 @@ public class BedRoomView {
         bedRoomService.getAllBedRooms();
     }
 
+    public void getBedRoomById(int id) {
+
+        BedRoom room = bedRoomService.getBedRoomById(id);
+
+        if (room != null) {
+            System.out.println("Habitación encontrada:");
+            System.out.println(room.getRoom());
+        } else {
+            System.out.println("Habitación no encontrada");
+        }
+    }
+
+    public void deleteBedRoom(int id) {
+
+        bedRoomService.deleteBedRoomById(id);
+    }
+
 
 
 }

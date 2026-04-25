@@ -38,4 +38,36 @@ public class Guest extends Person {
                 ", guestType='" + guestType + '\'' +
                 "} " + super.toString();
     }
+
+    public Guest createGuest(Guest guest){
+
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+
+        System.out.println("Ingrese el id del huésped");
+        guest.setId(sc.nextInt());
+        sc.nextLine();
+
+        System.out.println("Ingrese el nombre");
+        guest.setName(sc.nextLine());
+
+        System.out.println("Ingrese el apellido");
+        guest.setLastName(sc.nextLine());
+
+        System.out.println("Ingrese el correo");
+        guest.setEmail(sc.nextLine());
+
+        System.out.println("Ingrese la contraseña");
+        guest.setPassword(sc.nextLine());
+
+        System.out.println("Ingrese el origen");
+        guest.setOrigin(sc.nextLine());
+
+        System.out.println("Ingrese el tipo de huésped");
+        guest.setGuestType(sc.nextLine());
+
+        System.out.println("Estado (true/false)");
+        guest.setState(sc.nextBoolean());
+
+        return guest;
+    }
 }

@@ -31,10 +31,22 @@ public class BedRoomRepository implements BedRoomRepositoryPort {
     }
 
     @Override
-    public BedRoom updateBedRoom( int id, BedRoom bedRoom) {
+    public BedRoom updateBedRoom(int id, BedRoom bedRoom) {
 
-        bedRooms.set(bedRooms.indexOf(bedRoom), bedRoom);
-        return bedRoom;
+        for (int i = 0; i < bedRooms.size(); i++) {
+
+            if (bedRooms.get(i).getRoomId() == id) {
+
+                bedRooms.set(i, bedRoom);
+
+                System.out.println("Habitación actualizada correctamente");
+
+                return bedRoom;
+            }
+        }
+
+        System.out.println("Habitación no encontrada");
+        return null;
     }
 
     @Override

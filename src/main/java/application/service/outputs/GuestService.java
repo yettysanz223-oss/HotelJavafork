@@ -1,19 +1,14 @@
 package application.service.outputs;
 
 import application.domain.Guest;
-
-import java.util.Optional;
+import java.util.List;
 
 public interface GuestService {
 
-    public Guest createGuest(Guest guest);
-
-    public Guest updateGuest(Guest guest);
-
-    public Optional<Guest> getGuestById(int id);
-
-
-
-
+    Guest createGuest(Guest guest);
+    Guest updateGuest(Guest guest);
+    Guest getGuestById(int id);
+    List<Guest> getAllGuests();
+    void deleteGuestById(int id);
 
 }
